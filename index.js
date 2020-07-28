@@ -3,7 +3,8 @@ const https = require("https")
 const url = require("url")
 const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
-const { httpPort,httpsPort, envName } = require("./config")
+const { httpPort,httpsPort, envName } = require("./config");
+const { resolve } = require("path");
 
 // Instantiate the HTTP server
 const httpServer = http.createServer((req, res)=>{
@@ -97,12 +98,13 @@ const unifiedServer = (req, res)=>{
 // Define the handllers
 const handlers = {}
 
-// Sample handler
-handlers.sample = ()=>{
-    return new Promise((resolve)=> {
-        resolve([406, {"name": "sample handler"}])
+// ping handler
+handlers.ping = ()=>{
+    return new Promise((resolve)=>{
+        resolve([200])
     })
 }
+
 
 // Not found handler
 handlers.notFound = (data)=>{
@@ -112,5 +114,5 @@ handlers.notFound = (data)=>{
 }
 
 const router = {
-    'sample': handlers.sample
+    'ping': handlers.ping
 }
