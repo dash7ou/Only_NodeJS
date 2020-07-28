@@ -3,7 +3,7 @@ const https = require("https")
 const url = require("url")
 const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
-const { httpPort,httpsPort, envName } = require("./config");
+const { httpPort,httpsPort, envName } = require("./lib/config");
 const handlers = require("./lib/handler")
 const { parseJsonToObject } = require("./lib/helper") 
 
