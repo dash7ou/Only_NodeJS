@@ -5,6 +5,7 @@ const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
 const { httpPort,httpsPort, envName } = require("./config");
 const handlers = require("./lib/handler")
+const { parseJsonToObject } = require("./lib/helper") 
 
 // Instantiate the HTTP server
 const httpServer = http.createServer((req, res)=>{
@@ -63,12 +64,12 @@ const unifiedServer = (req, res)=>{
             queryStringObject: query,
             method,
             headers,
-            payload: buffer
+            payload: parseJsonToObject(buffer)
         }
 
         try{
             // Route the request to the handler specified in the router
-            let [ statusCode, payload ] =  await chosenHandler()
+            let [ statusCode, payload ] =  await chosenHandler(data)
             // console.log(data)
             // use the status code from promise or return default 200
             statusCode = typeof(statusCode) === 'number' ? statusCode : 200
@@ -90,8 +91,6 @@ const unifiedServer = (req, res)=>{
             res.writeHead(500)
             res.end("server problem!")
         }
-
-
     })
 }
 
