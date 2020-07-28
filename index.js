@@ -59,6 +59,8 @@ const server = http.createServer((req, res)=>{
 
         }catch(err){
             console.log(err)
+            res.writeHead(500)
+            res.end("server problem!")
         }
 
 
