@@ -4,7 +4,8 @@ const url = require("url")
 const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
 const { httpPort,httpsPort, envName } = require("./config");
-const { resolve } = require("path");
+const { writeData } = require("./lib/data")
+
 
 // Instantiate the HTTP server
 const httpServer = http.createServer((req, res)=>{
