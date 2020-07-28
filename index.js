@@ -51,12 +51,12 @@ const server = http.createServer((req, res)=>{
             // convert the payload to string
             const payloadString = JSON.stringify(payload)
 
+            // Return the Response
+            res.setHeader('Content-Type', 'application/json')
             res.writeHead(statusCode)
             res.end(payloadString)
 
             console.log('Returning this response: ', statusCode, payload)
-
-
         }catch(err){
             console.log(err)
             res.writeHead(500)
