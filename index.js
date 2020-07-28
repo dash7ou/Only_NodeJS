@@ -1,11 +1,11 @@
 const  http = require("http")
 const url = require("url")
 const { StringDecoder } = require("string_decoder");
-const { rejects } = require("assert");
-const { resolve } = require("path");
+const { port, envName } = require("./config")
 
 
 const server = http.createServer((req, res)=>{
+
     const parsedUrl = url.parse(req.url, true);
     const path = parsedUrl.pathname;
     const trimmedPath = path.replace(/^\/+|\/+$/g, "")
@@ -69,8 +69,8 @@ const server = http.createServer((req, res)=>{
 })
 
 // Start the server
-server.listen(3000, ()=>{
-    console.log("The server is listenining on port 3000 now!")
+server.listen(port, ()=>{
+    console.log(`The server is listenining on port ${port} in ${envName} mode!`)
 })
 
 // Define the handllers
