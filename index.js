@@ -4,7 +4,7 @@ const url = require("url")
 const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
 const { httpPort,httpsPort, envName } = require("./config");
-const { writeData } = require("./lib/data")
+const { deleteFile } = require("./lib/data")
 
 
 // Instantiate the HTTP server
