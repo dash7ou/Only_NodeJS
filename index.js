@@ -4,8 +4,7 @@ const url = require("url")
 const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
 const { httpPort,httpsPort, envName } = require("./config");
-const { deleteFile } = require("./lib/data")
-
+const handlers = require("./lib/handler")
 
 // Instantiate the HTTP server
 const httpServer = http.createServer((req, res)=>{
@@ -96,23 +95,7 @@ const unifiedServer = (req, res)=>{
     })
 }
 
-// Define the handllers
-const handlers = {}
 
-// ping handler
-handlers.ping = ()=>{
-    return new Promise((resolve)=>{
-        resolve([200])
-    })
-}
-
-
-// Not found handler
-handlers.notFound = (data)=>{
-    return new Promise((resolve)=>{
-        resolve([404])
-    })
-}
 
 const router = {
     'ping': handlers.ping
