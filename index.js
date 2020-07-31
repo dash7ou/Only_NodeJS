@@ -5,10 +5,10 @@ const Worker = require("./lib/worker")
 class App {
     init(){
         const server = new Server()
-        // const worker = new Worker()
+        const worker = new Worker()
 
         server.init();
-        // worker.init();
+        worker.init();
     }
 }
 
