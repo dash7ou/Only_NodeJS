@@ -5,7 +5,9 @@ const fs = require("fs")
 const { StringDecoder } = require("string_decoder");
 const { httpPort,httpsPort, envName } = require("./lib/config");
 const handlers = require("./lib/handler")
-const { parseJsonToObject } = require("./lib/helper") 
+const { parseJsonToObject, sendTwilioSms } = require("./lib/helper") 
+
+sendTwilioSms("+972592105998", "hi first test message").then(data=> console.log(data)).catch(err=> console.log(err))
 
 // Instantiate the HTTP server
 const httpServer = http.createServer((req, res)=>{
