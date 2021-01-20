@@ -54,3 +54,5 @@ class App {
 
 const RequestCus = new App();
 RequestCus.request(undefined, "api/users", "GET").then((data)=> console.log(data)).catch(err=> console.log(err));
+
+// test comment
